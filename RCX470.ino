@@ -9,8 +9,8 @@
 
 //-------------------------DEBUGGING--------------------------------------------------
 //#define SERVO_DEBUG     //  Shows Servo & ESC PWM outputs
-#define RX_DEBUG  //  Shows RX channels from Receiver
-//#define SENSOR_DEBUG    //  Shows Hall Sensor and Voltage Values
+//#define RX_DEBUG  //  Shows RX channels from Receiver
+#define SENSOR_DEBUG    //  Shows Hall Sensor and Voltage Values
 //#define ADVANCED_DEBUG  // Show Modes and Valve Controls
 
 //-------------------------Servo Outputs---------------------------------------------
@@ -42,6 +42,11 @@ int16_t Voltage = 0;
 int16_t BoomPos = 0;
 int16_t ArmPos = 0;
 int16_t BucketPos = 0;
+
+int16_t BoomSpeed = 0;
+int16_t ArmSpeed = 0;
+int16_t BucketSpeed = 0;
+
 int16_t Pressure = 0;
 
 Pwm pwm = Pwm();
@@ -68,8 +73,7 @@ void Process1(void* pvParameters) {
 
     ReadRX();
     ReadSensors();
-    delay(10);
-    HydraulicControl();
+    delay(50);
   }
 }
 
@@ -77,15 +81,15 @@ void Process2(void* pvParameters) {
 
   PwmInit();  // Function to Start Servo in Safe Position
 
-#ifdef SENSOR_DEBUG || RX_DEBUG || SERVO_DEBUG || ADVANCED_DEBUG
   Serial.begin(115200);
   Serial.println("Hydraulic Excavator Controller");
-#endif
 
   for (;;) {
 
     PwmOutput();
-    delay(100);
+    HydraulicControl();
+    PumpControl();
+    delay(10);
   }
 }
 

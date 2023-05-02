@@ -30,6 +30,26 @@ void PwmOutput() {
 
 
 #ifdef SERVO_DEBUG
-  pwm.printDebug();
+
+  Serial.print("\n");
+  Serial.print("Valves:");
+  Serial.print("\t");
+  Serial.print(BoomValve);
+  Serial.print("\t");
+  Serial.print(ArmValve);
+  Serial.print("\t");
+  Serial.println(BucketValve);
+
+  Serial.print("ESC:");
+  Serial.print("\t");
+  Serial.print(TrackLeftUs);
+  Serial.print("\t");
+  Serial.print(TrackRightUs);
+  Serial.print("\t");
+  Serial.print(SwingUs);
+  Serial.print("\t");
+  Serial.println(PumpUs);
 #endif
+
+  //  pwm.printDebug();   //  extra debug for ESP32 Analogwrite library
 }
