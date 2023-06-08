@@ -43,30 +43,31 @@
 //---------------------PIN DEFINITIONS------------------------------
 
 // Define pin numbers for the left and right travel motors
-#define TravelLeftPin 27
-#define TravelRightPin 14
+#define TravelLeftPin 8
+#define TravelRightPin 7
 
 // Define pin numbers servo valves and extra controls
-#define SwingPin 12
-#define BoomPin 16
-#define ArmPin 17
-#define BucketPin 18
+#define SwingPin 9
 
-#define ClawPin 23
-#define RotatorPin 19
+#define BoomPin 14
+#define ArmPin 13
+#define BucketPin 12
+
+#define ClawPin 11
+#define RotatorPin 15
 
 // Define pin number for the hydraulic pump
-#define PumpPin 4
+#define PumpPin 10
 
-#define VSensPin 35      //  Voltage Sense Pin
+#define VSensPin 2      //  Voltage Sense Pin
 #define Vmultiplier 4.0  // Multiplier value for voltage divider
 
-#define RXpin 22
+#define RXpin 36
 #define RXinverted false  //  ESP32 supports both Inverted and Non-Inv signals
 
 //====================================================================
 //---------------------Advanced Controls------------------------------
 // Define pin numbers for the hall sensors (optional)
-#define BoomSensorPin 36
-#define ArmSensorPin 39
-#define BucketSensorPin 34
+#define BoomSensorPin 6
+#define ArmSensorPin 5
+#define BucketSensorPin 4
