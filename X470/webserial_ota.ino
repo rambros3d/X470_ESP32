@@ -1,8 +1,8 @@
 
 AsyncWebServer server(80);
 
-const char* ssid = "Leap";
-const char* password = "awsedrft";  
+const char* ssid = "Home";
+const char* password = "12345678";  
 const char* apSSID = "X470-S3";
 const char* apPassword = "12121212";
 
