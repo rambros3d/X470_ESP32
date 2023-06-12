@@ -1,6 +1,6 @@
 
-#include "default_config.h"
-#include "params.h"
+#include "default_board_pins.h"
+#include "user-config.h"
 #include <pwmWrite.h>         //  https://github.com/Dlloydev/ESP32-ESP32S2-AnalogWrite
 #include "sbus.h"             //  https://github.com/bolderflight/sbus
 #include <IBusBM.h>           //  https://github.com/bmellink/IBusBM
@@ -33,8 +33,6 @@ void setup() {
 void core1Task(void* parameter) {
   WifiSetup();
   for (;;) {
-    //Repeat(blinkled, 500);
-    Repeat(webupdate, 2000);
     delay(1000);
   }
 }
