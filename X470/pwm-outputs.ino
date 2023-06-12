@@ -1,3 +1,4 @@
+
 void PwmInit() {
   pwm.writeServo(TravelLeftPin, EscMidUs);
   pwm.writeServo(TravelRightPin, EscMidUs);
@@ -9,28 +10,18 @@ void PwmInit() {
 }
 
 void PwmOutput() {
-  //---------------------------MOTOR CONTROLS--------------------------------
-  TrackLeftUs = map(RXchannel[LeftChannel], RXmin, RXmax, EscMinUs, EscMaxUs);
-  TrackRightUs = map(RXchannel[RightChannel], RXmin, RXmax, EscMinUs, EscMaxUs);
-
-  SwingUs = map(RXchannel[SwingChannel], RXmin, RXmax, EscMinUs, EscMaxUs);
-
-  //---------------------------MOVEMENT SERVOS-------------------------------
+  //---------------------------MOVEMENT ESC-------------------------------
   pwm.writeServo(TravelLeftPin, TrackLeftUs);
   pwm.writeServo(TravelRightPin, TrackRightUs);
-
   pwm.writeServo(SwingPin, SwingUs);
 
   //---------------------------HYDRAULIC CONTROLS------------------------------
   pwm.writeServo(PumpPin, PumpUs);
-
   pwm.writeServo(BoomPin, BoomValve);
   pwm.writeServo(ArmPin, ArmValve);
   pwm.writeServo(BucketPin, BucketValve);
 
-
 #ifdef SERVO_DEBUG
-
   Serial.print("\n");
   Serial.print("Valves:");
   Serial.print("\t");
@@ -38,7 +29,8 @@ void PwmOutput() {
   Serial.print("\t");
   Serial.print(ArmValve);
   Serial.print("\t");
-  Serial.println(BucketValve);
+  Serial.print(BucketValve);
+  Serial.print("\t");
 
   Serial.print("ESC:");
   Serial.print("\t");
