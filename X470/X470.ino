@@ -3,16 +3,8 @@
 #include "user-config.h"
 #include <pwmWrite.h>         //  https://github.com/Dlloydev/ESP32-ESP32S2-AnalogWrite
 #include "sbus.h"             //  https://github.com/bolderflight/sbus
-#include <IBusBM.h>           //  https://github.com/bmellink/IBusBM
-#include <ESP32AnalogRead.h>  //  https://github.com/madhephaestus/ESP32AnalogRead
 
-#include <WiFi.h>
-#include <AsyncTCP.h>
-#include <ESPAsyncWebSrv.h>
-#include <WebSerialLite.h>
-#include <AsyncElegantOTA.h>
-
-#define IBUS
+#define SBUS
 //-------------------------DEBUGGING--------------------------------------------------
 #define SERVO_DEBUG  //  Shows Servo & ESC PWM outputs
 //#define RX_DEBUG  //  Shows RX channels from Receiver
@@ -31,7 +23,6 @@ void setup() {
 }
 
 void core1Task(void* parameter) {
-  WifiSetup();
   for (;;) {
     delay(1000);
   }

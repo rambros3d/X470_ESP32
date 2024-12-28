@@ -8,18 +8,10 @@ bfs::SbusData data;
 #define sbusMax 1811
 #endif
 
-
-#ifdef IBUS
-IBusBM IBus;  // IBus object
-#define ibusMin 1000
-#define ibusMax 2000
-#endif
-
-
 //------------------------------------------------------------------
 void RXsetup() {
 
-  IBus.begin(Serial1, IBUSBM_NOTIMER, RXpin, TXpin);
+ // IBus.begin(Serial1, IBUSBM_NOTIMER, RXpin, TXpin);
 }
 //------------------------------------------------------------------
 void ReadRX() {
@@ -34,21 +26,12 @@ void ReadRX() {
   }
 #endif
 
-#ifdef IBUS
-  IBus.loop();  // call internal loop function to update the communication to the receiver
-  for (uint8_t i = 1; i <= 10; i++) {
-    RXchannel[i] = IBus.readChannel(i-1);
-    RXchannel[i] = map(RXchannel[i], ibusMin, ibusMax, RXmin, RXmax);
-    RXchannel[i] = constrain(RXchannel[i], RXmin, RXmax);
-  }
-#endif
-
 #ifdef RX_DEBUG
     /* Display the received data */
     for (uint8_t i = 1; i <= 10; i++) {
       Serial.print(RXchannel[i]);
       Serial.print("\t");
     }
-    //Serial.println(data.NUM_CH);
+    Serial.println(data.NUM_CH);
 #endif
 }
