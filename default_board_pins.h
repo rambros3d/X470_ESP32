@@ -1,7 +1,6 @@
 //==================================================================
 
 //----------------------SERVO CONTROLS------------------------------
-
 // Valid range is 0-180 (degrees) or 544-2400 (microseconds)
 // 1000 - 2000 us is suitable for Blheli_S & Blheli32 configured ESCs
 
@@ -25,35 +24,24 @@
 //==================================================================
 //---------------------PIN DEFINITIONS------------------------------
 
-// Define pin numbers for the left and right travel motors
-#define TravelLeftPin 8
-#define TravelRightPin 7
+// Define pin number for the hydraulic pump
+#define PumpPin E1
 
 // Define pin numbers servo valves and extra controls
-#define SwingPin 9
+#define SwingPin E2
 
-#define BoomPin 14
-#define ArmPin 13
-#define BucketPin 12
+// Define pin numbers for the left and right travel motors
+#define TravelLeftPin E3
+#define TravelRightPin E4
 
-#define ClawPin 11
-#define RotatorPin 15
 
-// Define pin number for the hydraulic pump
-#define PumpPin 10
+#define BoomPin S1
+#define ArmPin S2
+#define BucketPin S3
 
-#define VSensPin 2       //  Voltage Sense Pin
-#define Vmultiplier 4.0  // Multiplier value for voltage divider
-
-#define RXpin 36
+#define RXpin AUX1
 #define RXinverted false  //  ESP32 supports both Inverted and Non-Inv signals
 
-#define TXpin 35
-//====================================================================
-//---------------------Advanced Controls------------------------------
-// Define pin numbers for the hall sensors (optional)
-#define BoomSensorPin 6
-#define ArmSensorPin 5
-#define BucketSensorPin 4
+#define TXpin AUX2
 
-#define BOARD_LED 42
+#define BOARD_LED L1

@@ -1,5 +1,11 @@
 
 void PwmInit() {
+  pinMode(PWR_EN, OUTPUT);
+  pinMode(OUT_EN, OUTPUT);
+  //pinMode(BUCK_EN, OUTPUT);
+  digitalWrite(PWR_EN, LOW);
+  digitalWrite(OUT_EN, HIGH);
+  //pinMode(BUCK_EN, HIGH);
   pwm.writeServo(TravelLeftPin, EscMidUs);
   pwm.writeServo(TravelRightPin, EscMidUs);
   pwm.writeServo(SwingPin, EscMidUs);
@@ -41,7 +47,7 @@ void PwmOutput() {
   Serial.print(SwingUs);
   Serial.print("\t");
   Serial.println(PumpUs);
+  
+  //pwm.printDebug();   //  extra debug for ESP32 Analogwrite library
 #endif
-
-  //  pwm.printDebug();   //  extra debug for ESP32 Analogwrite library
 }

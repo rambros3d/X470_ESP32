@@ -1,10 +1,13 @@
-
 #include "default_board_pins.h"
 #include "user-config.h"
-#include <pwmWrite.h>         //  https://github.com/Dlloydev/ESP32-ESP32S2-AnalogWrite
-#include "sbus.h"             //  https://github.com/bolderflight/sbus
 
-#define SBUS
+#define IBUS
+//#define SBUS
+
+#include <pwmWrite.h>  //  https://github.com/Dlloydev/ESP32-ESP32S2-AnalogWrite
+#include "sbus.h"      //  https://github.com/bolderflight/sbus
+#include <IBusBM.h>    //  https://github.com/bmellink/IBusBM/
+
 //-------------------------DEBUGGING--------------------------------------------------
 #define SERVO_DEBUG  //  Shows Servo & ESC PWM outputs
 //#define RX_DEBUG  //  Shows RX channels from Receiver
@@ -15,6 +18,10 @@ Pwm pwm = Pwm();  // pwm setup for ESC & Servo
 TaskHandle_t coreTask1;
 TaskHandle_t coreTask2;
 
+#include "rx-inputs.h"
+#include "pwm-outputs.h"
+#include "rc-process.h"
+
 void setup() {
   Serial.begin(115200);
 
@@ -23,16 +30,16 @@ void setup() {
 }
 
 void core1Task(void* parameter) {
+  RXsetup();
   for (;;) {
-    delay(1000);
+    ReadRX();
+    delay(50);
   }
 }
 
 void core2Task(void* parameter) {
-  RXsetup();
   PwmInit();  // Function to Start Servo in Safe Position
   for (;;) {
-    ReadRX();
     PumpControl();
     HydraulicControl();
     MotorControl();
