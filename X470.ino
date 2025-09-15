@@ -1,8 +1,5 @@
 #include "user-config.h"  //  modify this file to trim valve midpoints
 
-#define IBUS
-//#define SBUS
-
 #include <pwmWrite.h>  //  https://github.com/Dlloydev/ESP32-ESP32S2-AnalogWrite
 #include "sbus.h"      //  https://github.com/bolderflight/sbus
 #include <IBusBM.h>    //  https://github.com/bmellink/IBusBM/

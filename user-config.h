@@ -1,3 +1,8 @@
+//----------------------RECEIVER PROTOCOL------------------------------
+// uncomment the correct option according to your receiver
+//#define IBUS
+#define SBUS
+
 //----------------------SERVO CONTROLS------------------------------
 
 // EDIT these 3 values to set the midpoint of the valve
