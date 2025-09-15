@@ -1,3 +1,26 @@
+//----------------------SERVO CONTROLS------------------------------
+
+// EDIT these 3 values to set the midpoint of the valve
+// The Valve should be closed when the Servo Angle is in the mid position
+#define BoomValveMid 90
+#define ArmValveMid 90
+#define BucketValveMid 90
+
+
+
+// Likewise the valve should be fully open when servo hits the endpoint range
+// Servo Range is (Midpoint - Valverange) to (Midpoint + ValveRange)
+#define ValveRange 45
+
+
+// 1000 - 2000 us is suitable for Blheli32 & AM32 configured ESCs
+#define EscMinUs 1000
+#define EscMidUs 1500
+#define EscMaxUs 2000
+
+#define PumpMax 1500  //  Range is from 0 to 2000
+
+
 //-------------------------RX Settings-------------------------------------
 
 uint8_t RXprotocol = 3;  //  1=SBUS, 2=SBUS_INVERTED, 3=IBUS, 4=PPM
@@ -27,21 +50,4 @@ int16_t RXchannel[17];  //  Organize input range from -1000 to 1000
 const int16_t RXmin = -1000;
 const int16_t RXmax = 1000;
 
-bool HydraulicEn = 0;
-
-int8_t HydraulicMode = 1;  //  Different Modes for Advanced hydraulics
-int8_t PumpMode = 1;       //  Modes to control Pump Motor Automatically
 //--------------------------------------------------------------------------
-
-int16_t Voltage = 0;
-
-//----------------------------Hydraulics--------------------------------------
-int16_t BoomPos = 0;
-int16_t ArmPos = 0;
-int16_t BucketPos = 0;
-
-int16_t BoomSpeed = 0;
-int16_t ArmSpeed = 0;
-int16_t BucketSpeed = 0;
-
-int16_t Pressure = 0;

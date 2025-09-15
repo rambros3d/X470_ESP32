@@ -1,5 +1,4 @@
-#include "default_board_pins.h"
-#include "user-config.h"
+#include "user-config.h"  //  modify this file to trim valve midpoints
 
 #define IBUS
 //#define SBUS
@@ -18,9 +17,9 @@ Pwm pwm = Pwm();  // pwm setup for ESC & Servo
 TaskHandle_t coreTask1;
 TaskHandle_t coreTask2;
 
+#include "board_config.h"
 #include "rx-inputs.h"
 #include "pwm-outputs.h"
-#include "rc-process.h"
 
 void setup() {
   Serial.begin(115200);
@@ -33,7 +32,7 @@ void core1Task(void* parameter) {
   RXsetup();
   for (;;) {
     ReadRX();
-    delay(50);
+    delay(10);
   }
 }
 
